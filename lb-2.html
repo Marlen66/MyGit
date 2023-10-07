@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <p>Enter the first number: </p>
+    <input type="text" id="fNumber"><br><br>
+    <p>Enter the second number: </p>
+    <input type="text" id="sNumber"><br><br>
+    <button id="add">+</button>
+    <button id="subtract">-</button>
+    <button id="multiply">*</button>
+    <button id="divide">/</button>
+    <p><span id="res">Result: </span><span id="result">0</span></p>
+    <script>
+        var firstNumberInput = document.getElementById("fNumber");
+        var secondNumberInput = document.getElementById("sNumber");
+        var resultSpan = document.getElementById("result");
+
+        function showResult(operator) {
+            var firstNumber = parseFloat(firstNumberInput.value);
+            var secondNumber = parseFloat(secondNumberInput.value);
+            var result;
+
+            switch (operator) {
+                case "+":
+                    result = firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result = firstNumber - secondNumber;
+                    break;
+                case "*":
+                    result = firstNumber * secondNumber;
+                    break;
+                case "/":
+                    if (secondNumber > 0) {
+                        result = firstNumber / secondNumber;
+                    } else {
+                        result = "Division by zero is not allowed";
+                    }
+                    break;
+                default:
+                    result = "Invalid operator";
+            }
+
+            resultSpan.textContent = result;
+        }
+
+        document.getElementById('add').addEventListener('click', function() {
+            showResult('+');
+        })
+        document.getElementById('subtract').addEventListener('click', function() {
+            showResult('-');
+        })
+        document.getElementById('multiply').addEventListener('click', function() {
+            showResult('*');
+        })
+        document.getElementById('divide').addEventListener('click', function() {
+            showResult('/');
+        })
+    </script>
+</body>
+</html>
